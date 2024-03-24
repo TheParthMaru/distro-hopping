@@ -77,3 +77,23 @@ mysql -uroot -p <temporary_password>
 
 mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'Parth@26898';
 ```
+
+# Nodejs with NVM
+- Link: https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+# You can close and open your terminal and by default the below path will be exported. If not then add the below path in .bashrc
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# Reload configurations
+source .bashrc
+
+# Check version
+nvm -v
+
+# Install the latest nodejs
+nvm install latest
+```
