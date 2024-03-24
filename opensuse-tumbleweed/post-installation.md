@@ -30,3 +30,50 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 sudo zypper refresh
 sudo zypper install code
 ```
+
+# MySQL
+
+- Download the mysql repository rpm package file from the link: https://dev.mysql.com/downloads/repo/suse/
+- This will be mysql-8.0 version.
+
+```bash
+sudo rpm -Uvh package-name.rpm
+
+# Example
+sudo rpm -Uvh mysql80-community-release-sl15-8.noarch.rpm
+```
+
+- Where `-Uvh` stands for upgrade, verbose and hash.
+- Import MySQL GnuPG Key
+
+```bash
+sudo rpm --import /etc/RPM-GPG-KEY-mysql
+```
+
+- Install mysql community server
+
+```
+sudo zypper install mysql-community-server
+```
+
+- Start server
+```
+systemctl start mysql
+```
+
+- Check server status
+```
+systemctl status mysql
+```
+
+- Initially a temporary password is generated for user `root`.
+```
+sudo grep 'temporary password' /var/log/mysql/mysqld.log
+```
+
+- Change the root password
+```
+mysql -uroot -p <temporary_password>
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'Parth@26898';
+```
